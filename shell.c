@@ -1,13 +1,17 @@
 #include "shell.h"
 
+/**
+ * main - function that takes in executable from command line and executes it
+ *
+ * Return: int - indicating success or failure
+ */
+
 int main(void)
 {
-	char *line = NULL;
-        size_t length = 0;
-        ssize_t read;
-	pid_t pid;
-	int status;
 	char **argv;
+	char *line = NULL;
+	size_t length = 0;
+	ssize_t read;
 
 	_putstring(PROMPT);
 	while ((read = getline(&line, &length, stdin) != EOF))
@@ -25,28 +29,11 @@ int main(void)
 
 		argv = tokenizer(line);
 
-		if (access(argv[0], X_OK) == 0)
-		{
-			pid = fork();
-			if (pid == 0)
-			{
-				execve(argv[0], argv, environ);
-//				perror();
-			}
-			else if (pid < 0)
-			{
-				perror("Error\n");
-				return (1);
-			}
-			else
-			{
-				wait(&status);
-			}
-		}
-		_putstring(PROMPT);
-//		free(line);
-//		free(argv);
-	}
+		execute_cmd(argv);
 
+		_putstring(PROMPT);
+/*		free(line); */
+/*		free(argv); */
+	}
 	return (EXIT_SUCCESS);
 }

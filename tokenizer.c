@@ -1,19 +1,19 @@
 #include "shell.h"
 
 /**
- * tokenizer - function that takes a given string and tokenizes it via delimiter
- * @str: string to be tokenized
+ * tokenizer - function that takes a given string, tokenizes it via delimiter
+ * @line: string to be tokenized
  *
  * Return: array of tokens
  */
 
-char **tokenizer (char *line)
+char **tokenizer(char *line)
 {
-        char **argv;
-        char *token;
-        char *line_copy;
-        size_t i = 0;
-        size_t word_count = 0;
+	char **argv;
+	char *token;
+	char *line_copy;
+	size_t i = 0;
+	size_t word_count = 0;
 
 	if (!line)
 		return (NULL);
@@ -28,7 +28,7 @@ char **tokenizer (char *line)
 	}
 
 	token = strtok(line, DELIMITER);
-	//Need to malloc +1 ??
+	/*Need to malloc +1 ??*/
 	argv = malloc(sizeof(char *) * word_count);
 
 	while (token)

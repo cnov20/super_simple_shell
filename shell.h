@@ -42,6 +42,7 @@ char *_memcpy(char *dest, char *src, unsigned int n);
 char *_strdup(char *src);
 void shell_exit(int status);
 char **tokenizer(char *line);
+int execute_cmd(char **argv);
 char *_strncat(char *dest, char *src, int n);
 
 #endif /*SHELL_H*/

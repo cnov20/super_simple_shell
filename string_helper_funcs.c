@@ -8,7 +8,6 @@
  *
  * Return: pointer to dest
  */
-
 char *_strncat(char *dest, char *src, int n)
 {
 	int i, j;
@@ -24,8 +23,6 @@ char *_strncat(char *dest, char *src, int n)
 	}
 	return (dest);
 }
-
-
 /**
  * _putchar - writes the character c to stdout
  * @c: The character to print
@@ -35,31 +32,23 @@ char *_strncat(char *dest, char *src, int n)
  */
 int _putchar(char c)
 {
-        return (write(1, &c, 1));
+	return (write(1, &c, 1));
 }
-
 /**
+ * _putstring - prints a string to std out
+ * @str - pointer to a string (array of characters)
  *
- *
- *
+ * Return: Nothing - void
  */
-
 void _putstring(char *str)
 {
-        unsigned int i;
+	unsigned int i;
 
-        for (i = 0; str[i] != '\0'; i++)
-        {
-                _putchar(str[i]);
-        }
-
+	for (i = 0; str[i] != '\0'; i++)
+	{
+		_putchar(str[i]);
+	}
 }
-
-/*void _putprompt(char *str)
-{
-	write(STDOUT_FILENO, str, _strlen(PROMPT));
-}
-*/
 
 /**
  * *_memcpy - function that copies memory area
@@ -69,19 +58,18 @@ void _putstring(char *str)
  *
  * Return: pointer to memory area (dest)
  */
-
 char *_memcpy(char *dest, char *src, unsigned int n)
 {
-        unsigned int i;
+	unsigned int i;
 
-        i = 0;
-        while (i < n)
-        {
-                dest[i] = src[i];
-                i++;
-        }
+	i = 0;
+	while (i < n)
+	{
+		dest[i] = src[i];
+		i++;
+	}
 
-        return (dest);
+	return (dest);
 }
 
 /**
@@ -94,21 +82,20 @@ char *_memcpy(char *dest, char *src, unsigned int n)
 
 int _strcmp(char *s1, char *s2)
 {
-        int i;
+	int i;
 
-        i = 0;
+	i = 0;
 
-        while (s1[i] == s2[i] && s1[i] != '\0')
-        {
-                i++;
+	while (s1[i] == s2[i] && s1[i] != '\0')
+	{
+		i++;
+	}
+	if (s1[i] != s2[i])
+	{
+		return (s1[i] - s2[i]);
+	}
 
-        }
-        if (s1[i] != s2[i])
-        {
-                return (s1[i] - s2[i]);
-        }
-
-        return (0);
+	return (0);
 }
 
 /**
@@ -120,27 +107,34 @@ int _strcmp(char *s1, char *s2)
 
 char *_strdup(char *src)
 {
-        char *dup;
-        size_t length;
+	char *dup;
+	size_t length;
 
-        length = _strlen(src);
-        dup = malloc(length);
+	length = _strlen(src);
+	dup = malloc(length);
 
-        if (dup == NULL)
-                return NULL;
+	if (dup == NULL)
+		return (NULL);
 
-        return(_memcpy(dup, src, length));
-//	free(dup);
+	return (_memcpy(dup, src, length));
+/*	free(dup);*/
 }
+
+/**
+ * _strlen - finds the length of a string, excluding the null character
+ * @str: pointer to string (arrary of characters)
+ *
+ * Return: length of string (unsigned int)
+ */
 
 unsigned int _strlen(char *str)
 {
-        unsigned int i;
+	unsigned int i;
 
-        for(i = 0; i != '\0'; i++)
-        {
-                _putchar(str[i]);
-        }
+	for (i = 0; i != '\0'; i++)
+	{
+		_putchar(str[i]);
+	}
 
-        return (i);
+	return (i);
 }
